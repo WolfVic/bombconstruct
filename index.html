@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bonjour</title>
+</head>
+<body>
+  <p id='server-time'></p>
+  <script>
+    var HOST = location.origin.replace(/^http/, 'ws')
+    var ws = new WebSocket(HOST);
+    var el = document.getElementById('server-time');
+    ws.onmessage = function (event) {
+      el.innerHTML = 'Server time: ' + event.data;
+    };
+  </script>
+</body>
+</html>
